@@ -8,10 +8,6 @@ from flask import (
 
 app = Flask(__name__)
 
-for i in os.listdir():
-	if i == 'templates':
-		temp = os.path.abspath(i)
-
 @app.route('/')
 def HOME_PAGE():
 	temp_HOME = os.path.abspath('home.html')
