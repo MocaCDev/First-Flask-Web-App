@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.route('/')
 def HOME_PAGE():
 	temp_HOME = os.path.abspath('home.html')
-	return render_template(temp_HOME)
+	return render_template("home.html")
 
 if __name__=='__main__':
 	app.run(debug=True)
