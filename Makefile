@@ -1,8 +1,7 @@
-.PHONY: AllPyFiles
+.PHONY: AllFiles
 .PHONY: main.py
 
-AllPyFiles:
-	main.py
+AllFiles: main.py
 
 main.py:
 	python3 main.py

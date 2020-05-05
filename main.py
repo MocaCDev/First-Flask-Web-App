@@ -10,8 +10,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def HOME_PAGE():
-	temp_HOME = os.path.abspath('home.html')
 	return render_template("home.html")
+
+@app.route('/about')
+def ABOUT_PAGE():
+	return render_template("about.html")
 
 if __name__=='__main__':
 	app.run(debug=True)
