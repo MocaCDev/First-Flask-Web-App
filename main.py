@@ -14,7 +14,7 @@ for i in os.listdir():
 
 @app.route('/')
 def HOME_PAGE():
-	temp_HOME = os.path.abspath(temp+'/home.html')
+	temp_HOME = os.path.abspath('home.html')
 	return render_template(temp_HOME)
 
 if __name__=='__main__':
