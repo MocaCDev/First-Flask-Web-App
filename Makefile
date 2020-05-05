@@ -1,6 +1,6 @@
 .PHONY: AllPyFiles
 .PHONY: main.py
-.PHONE: CFILTER
+.PHONY: CFILTER
 
 AllPyFiles:
 	main.py
