@@ -31,7 +31,7 @@ def HOME_PAGE():
 			for x in range(len(usernames_)):
 				if i in usernames_[x].lower():
 					del usernames_[x]
-					return '<h1>Username is bad.</h1> <button type="submit"><a href="/" style="color:white;text-decoration:none;background-color:black">BACK</a></button>'
+					return '<h1>Username is bad.</h1> <a href="/" style="color:white;text-decoration:none"><button type="submit" style="background-color:black">Go Back</button></a>'
 		return render_template('submit.html', username=usernames_)
 	else:
 		return render_template("userSetup.html")
