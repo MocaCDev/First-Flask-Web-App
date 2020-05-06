@@ -29,7 +29,7 @@ def HOME_PAGE():
 		usernames_.append(request.form['Username'])
 		for i in filter_out:
 			for x in range(len(usernames_)):
-				if i in usernames_[x].toLower():
+				if i in usernames_[x].lower():
 					del usernames_[x]
 					return '<h1>Username is bad.</h1> <button type="submit"><a href="/" style="color:white;text-decoration:none;background-color:black">BACK</a></button>'
 		return render_template('submit.html', username=usernames_)
