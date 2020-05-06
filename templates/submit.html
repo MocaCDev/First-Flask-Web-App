@@ -5,10 +5,8 @@
 {% endblock %}
 
 {% block body %}
-<h4>Submit Success</h4>
+<h4>Submit Success for {{ username }}</h4>
 <form action="/" method="POST">
 	<button type="submit" name="Back Button">Go Back</button>
-	{% if request.method=='POST':return "DONE" %}
-	{% else: return render_template('submit.html') %}
 </form>
 {% endblock %}

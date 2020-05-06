@@ -14,9 +14,15 @@ app = Flask(__name__)
 def Submit():
 	return render_template('submit.html')
 
+"""
+	Home Page is the page where user will enter credentials
+"""
 @app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
-	return render_template("home.html")
+	if request.method == 'POST':
+		return render_template('submit.html', username="Username")
+	else:
+		return render_template("home.html")
 
 @app.route('/about')
 def ABOUT_PAGE():
