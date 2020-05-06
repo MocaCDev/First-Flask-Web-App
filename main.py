@@ -16,7 +16,7 @@ filter_out = [
 	'suck'
 ]
 usernames_ = []
-time_now = datetime.datetime.now()
+time_now = datetime.now()
 
 @app.route('/Submitted')
 def Submit():
