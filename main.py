@@ -11,9 +11,12 @@ from flask import (
 app = Flask(__name__)
 username_ = 'AIDAN'
 
-@app.route('/Submit')
+@app.route('/Submitted')
 def Submit():
-	return render_template('submit.html', username=username_)
+	if request.method == 'POST':
+		return render_template('home.html', username=username_)
+	else:
+		return render_template('submit.html')
 
 """
 	Home Page is the page where user will enter credentials
