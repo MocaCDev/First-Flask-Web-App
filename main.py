@@ -1,11 +1,11 @@
 """ ------ FLASK WEB APP ------"""
 """ ------ LINUX/UNIX BASED ------"""
-import os
-from datetime import datetime
+#import os
+#from datetime import datetime
 from flask import (
 	Flask,
 	render_template,
-	url_for,
+	#url_for,
 	request
 )
 
@@ -16,7 +16,7 @@ filter_out = [
 	'suck'
 ]
 usernames_ = []
-time_now = datetime.now().strftime("%H:%M:%S")
+#time_now = datetime.now().strftime("%H:%M:%S")
 
 @app.route('/Submitted')
 def Submit():
@@ -36,7 +36,7 @@ def HOME_PAGE():
 					return '<h1>Username is bad.</h1> <a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'
 		return render_template('submit.html', username=usernames_)
 	else:
-		return render_template("userSetup.html", username=usernames_, times_added=time_now)
+		return render_template("userSetup.html", username=usernames_)
 
 @app.route('/about')
 def ABOUT_PAGE():
