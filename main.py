@@ -22,9 +22,10 @@ def Submit():
 def HOME_PAGE():
 	if request.method == 'POST':
 		username_ = request.form['Username']
-		
+
 		return render_template('submit.html', username=username_)
-	return render_template("home.html")
+	else:
+		return render_template("home.html")
 
 @app.route('/about')
 def ABOUT_PAGE():
