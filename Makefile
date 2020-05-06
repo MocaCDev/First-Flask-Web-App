@@ -4,7 +4,7 @@
 .PHONY: InstallPyLint
 
 InstallPyLint:
-	sudo apt-get install pylint
+	apt-get install pylint
 
 AllFiles: main.py
 
