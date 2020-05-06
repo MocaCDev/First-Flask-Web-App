@@ -6,10 +6,14 @@
 
 {% block body %}
 <h1>Home Page</h1></br>
+{% if username|length < 1 %}
 <div class="Username">
 	<form action="/" method="POST">
 		<input type="text" name="Username" id="Username"/>
 		<input type="Submit" value="Submit"/>
 	</form>
 </div>
+{% else %}
+<h1>You Already Setup</h1>
+{% endif %}
 {% endblock %}
