@@ -27,7 +27,7 @@ def Submit():
 @app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
 	if request.method == 'POST':
-		usernames_.append(request.form['Username']+'(TIME {})'.format(datetime.utcnow))
+		usernames_.append(request.form['Username']+'(TIME {})'.format(datetime.datetime.now()))
 		for i in filter_out:
 			for x in range(len(usernames_)):
 				if i in usernames_[x].lower():
