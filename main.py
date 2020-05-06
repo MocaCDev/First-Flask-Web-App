@@ -12,10 +12,7 @@ app = Flask(__name__)
 
 @app.route('/Submit', methods=['POST','GET'])
 def Submit():
-	if request.method == 'POST':
-		return render_template('home.html')
-	else:
-		return render_template('submit.html')
+	return render_template('submit.html')
 
 @app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
