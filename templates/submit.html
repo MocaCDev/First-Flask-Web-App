@@ -8,5 +8,6 @@
 <h4>Submit Success</h4>
 <form action="/" method="POST">
 	<button type="submit" name="Back Button">Go Back</button>
+	{% if request.method=='POST':return "DONE" %}
 </form>
 {% endblock %}
