@@ -6,7 +6,5 @@
 
 {% block body %}
 <h4>Submit Success for {{ username }}</h4>
-<form action="/Submitted" method="POST">
-	<button type="submit">Go Back</button>
-</form>
+<button type="submit"><a href="/Submitted" style="color:white;text-decoration:none">Go Back</a></button>
 {% endblock %}
