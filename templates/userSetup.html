@@ -14,9 +14,9 @@
 </div>
 {% if username|length >= 1 %}
 {% for i in username %}
+<p>Added Username: {{ i }}
 {% for x in times_added %}
-<h1>Users Setup(So Far): {{ i }}, AT TIME {{ x }}</h1>
-{% break %}
+At Time: {{x}}</p>
 {% endfor %}
 {% endfor %}
 {% endif %}
