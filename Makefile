@@ -4,7 +4,7 @@
 .PHONY: InstallPyLint
 
 InstallPyLint:
-	apt-get install pylint
+	pip3 install pylint
 
 AllFiles: main.py
 
