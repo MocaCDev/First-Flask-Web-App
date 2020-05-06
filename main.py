@@ -9,11 +9,11 @@ from flask import (
 )
 
 app = Flask(__name__)
-username_ = []
+usernames_ = []
 
 @app.route('/Submitted')
 def Submit():
-	return render_template('homePage.html', username=username_)
+	return render_template('homePage.html', usernames=usernames_)
 
 """
 	Home Page is the page where user will enter credentials
@@ -21,8 +21,8 @@ def Submit():
 @app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
 	if request.method == 'POST':
-		username_.append(request.form['Username'])
-		return render_template('submit.html', username=username_)
+		usernames_.append(request.form['Username'])
+		return render_template('submit.html', username=usernames_)
 	else:
 		return render_template("userSetup.html")
 
