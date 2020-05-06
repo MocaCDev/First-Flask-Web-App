@@ -1,6 +1,7 @@
 """ ------ FLASK WEB APP ------"""
 """ ------ LINUX/UNIX BASED ------"""
 import os
+from datetime import datetime
 from flask import (
 	Flask,
 	render_template,
@@ -26,7 +27,7 @@ def Submit():
 @app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
 	if request.method == 'POST':
-		usernames_.append(request.form['Username'])
+		usernames_.append(request.form['Username']+'(TIME {})'.format(datetime.utcnow))
 		for i in filter_out:
 			for x in range(len(usernames_)):
 				if i in usernames_[x].lower():
