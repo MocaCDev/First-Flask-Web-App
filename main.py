@@ -22,6 +22,7 @@ def Submit():
 def HOME_PAGE():
 	if request.method == 'POST':
 		username_ = request.form['Username']
+		
 		return render_template('submit.html', username=username_)
 	return render_template("home.html")
 
