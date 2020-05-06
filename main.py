@@ -21,7 +21,7 @@ def Submit():
 @app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
 	if request.method == 'POST':
-		username = request.form['GetInfo']
+		username = request.form['Username']
 	return render_template("home.html")
 
 @app.route('/about')
