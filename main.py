@@ -19,10 +19,7 @@ def Submit():
 
 @app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
-	if request.method == 'POST':
-		Submit()
-	else:
-		return render_template("home.html")
+	return render_template("home.html")
 
 @app.route('/about')
 def ABOUT_PAGE():
