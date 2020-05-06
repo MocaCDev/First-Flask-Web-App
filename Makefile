@@ -3,8 +3,6 @@
 .PHONY: DebugPy
 .PHONY: InstallFlake8
 
-make foo=bar target
-
 InstallFlake8:
 	python -m pip3 install flake8
 
@@ -14,4 +12,4 @@ main.py:
 	python3 main.py
 
 DebugPy:
-	flake8 $(foo)
+	flake8 $(pathToDebug)
