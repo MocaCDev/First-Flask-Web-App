@@ -4,7 +4,7 @@
 .PHONY: InstallFlake8
 
 InstallFlake8:
-	python -m pip3 install flake8
+	pip3 install flake8
 
 AllFiles: main.py
 
