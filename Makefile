@@ -1,10 +1,10 @@
 .PHONY: AllFiles
 .PHONY: main.py
 .PHONY: DebugPy
-.PHONY: InstallFlake8
+.PHONY: InstallPyLint
 
-InstallFlake8:
-	pip3 install flake8
+InstallPyLint:
+	sudo apt-get install pylint
 
 AllFiles: main.py
 
@@ -12,4 +12,4 @@ main.py:
 	python3 main.py
 
 DebugPy:
-	flake8 $(pathToDebug)
+	pylint $(PATH)
