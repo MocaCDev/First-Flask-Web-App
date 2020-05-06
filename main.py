@@ -9,6 +9,11 @@ from flask import (
 )
 
 app = Flask(__name__)
+# NAMES TO FILTER OUT
+filter_out = [
+	'fuck','dick','pussy','bombed','sex','porn','porno',
+	'suck'
+]
 usernames_ = []
 
 @app.route('/Submitted')
@@ -22,6 +27,10 @@ def Submit():
 def HOME_PAGE():
 	if request.method == 'POST':
 		usernames_.append(request.form['Username'])
+		for i in filter_out:
+			for x in usernames_:
+				if i in x:
+					return '<h1>Username is bad.</h1> <button type="submit"><a href="/" style="color:white;text-decoration:none">BACK</a></button>'
 		return render_template('submit.html', username=usernames_)
 	else:
 		return render_template("userSetup.html")
