@@ -7,7 +7,9 @@
 {% block body %}
 <h1>Home Page</h1></br>
 <div class="Username">
-	<input type="text" name="Username" id="Username"/>
-	<a href="/Submit"><button type="submit">SUBMIT</button></a>
+	<form action="/Submit" method="POST">
+		<input type="text" name="Username" id="Username"/>
+		<input type="Submit" value="Submit"/>
+	</form>
 </div>
 {% endblock %}
