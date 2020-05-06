@@ -6,14 +6,10 @@
 
 {% block body %}
 <h1>Home Page</h1></br>
-{% if requested|length < 1 %}
 <div class="Username">
 	<form action="/" method="POST">
 		<input type="text" name="Username" id="Username"/>
 		<input type="Submit" value="Submit"/>
 	</form>
 </div>
-{% else %}
-<h2>Hello, {{ username }}</h2>
-{% endif %}
 {% endblock %}
