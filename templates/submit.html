@@ -9,5 +9,6 @@
 <form action="/" method="POST">
 	<button type="submit" name="Back Button">Go Back</button>
 	{% if request.method=='POST':return "DONE" %}
+	{% else: return render_template('submit.html') %}
 </form>
 {% endblock %}
