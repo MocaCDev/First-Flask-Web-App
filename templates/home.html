@@ -6,8 +6,10 @@
 
 {% block body %}
 <h1>Home Page</h1></br>
-<input type="enter" name="Username"/>
-<form action="/" method="POST">
+<div class="GetInfo">
+	<input type="enter" name="Username"/>
+</div>
+<form action="/Submit" method="POST">
 	<button type="submit" name="Submit Button">SUBMIT</button>
 </form>
 {% endblock %}
