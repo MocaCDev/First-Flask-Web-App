@@ -23,7 +23,7 @@ app = Flask(__name__)
 # NAMES TO FILTER OUT
 filter_out = [
 	'fuck','dick','pussy','bombed','sex','porn','porno',
-	'suck'
+	'suck','xnxx','pornhub'
 ]
 usernames_ = []
 #time_now = datetime.now().strftime("%H:%M:%S")
