@@ -1,9 +1,17 @@
 {% extends 'BASETEMP.html' %}
 
 {% block head %}
-
+<link rel="stylesheet" href="{{url_for('static',filename='css/aboutStyle.css')}}"/>
 {% endblock %}
 
 {% block body %}
-	<header id="WelcomeHeader"></header>
+<header id="WelcomeHeader"></header>
+<script type="text/javascript">
+	window.onload = () => {
+		let WelcomeHeader = document.getElementById('WelcomeHeader');
+		let NewElement = document.createElement('h1');
+		NewElement.innerText = "About Page";
+		WelcomeHeader.appendChild(NewElement);
+	}
+</script>
 {% endblock %}
