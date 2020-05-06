@@ -9,7 +9,8 @@ from flask import (
 )
 
 app = Flask(__name__)
-username_ = 'AIDAN'
+username_ = ''
+requested = 0
 
 @app.route('/Submitted')
 def Submit():
@@ -23,7 +24,7 @@ def Submit():
 def HOME_PAGE():
 	if request.method == 'POST':
 		username_ = request.form['Username']
-
+		requested = 1
 		return render_template('submit.html', username=username_)
 	else:
 		return render_template("home.html")
