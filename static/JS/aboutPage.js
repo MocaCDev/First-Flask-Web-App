@@ -1,5 +1,4 @@
 window.onload = (event) => {
-	const NewElement = document.createElement('h1');
-	NewElement.innerText = "About Page";
-	console.log("LOADED");
+	document.getElementById('WelcomeHeader').innerText = "About Page";
+	console.log('Loaded');
 }
