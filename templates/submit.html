@@ -5,8 +5,6 @@
 {% endblock %}
 
 {% block body %}
-{{ for i in username_ }}
-<h4>Submit Success for {{ i }}</br></h4>
-{{% endfor %}}
+<h4>Submit Success for {{ username }}</br></h4>
 <button type="submit"><a href="/Submitted" style="color:white;text-decoration:none">Go Back</a></button>
 {% endblock %}
