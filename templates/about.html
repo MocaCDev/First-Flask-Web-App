@@ -2,12 +2,15 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{url_for('static',filename='css/aboutStyle.css')}}"/>
-<script src="{{url_for('static',filename='aboutPage.js')}}"></script>
+<!--<script src="{{url_for('static',filename='aboutPage.js')}}"></script>-->
 {% endblock %}
 
 {% block body %}
 <header id="WelcomeHeader"></header>
+
 <!--
+	For some reason when we try using another .js file with the flask application...it keeps old code and does not update...
+ -->
 <script type="text/javascript">
 	window.onload = () => {
 		let WelcomeHeader = document.getElementById('WelcomeHeader');
@@ -16,5 +19,4 @@
 		WelcomeHeader.appendChild(NewElement);
 	}
 </script>
--->
 {% endblock %}

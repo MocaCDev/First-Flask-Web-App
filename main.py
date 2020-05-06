@@ -4,14 +4,18 @@ import os
 from flask import (
 	Flask,
 	render_template,
-	url_for
+	url_for,
+	request
 )
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
-	return render_template("home.html")
+	if request.method == 'POST':
+		return 'SUBMIT SUCCESS'
+	else:
+		return render_template("home.html")
 
 @app.route('/about')
 def ABOUT_PAGE():
