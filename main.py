@@ -17,6 +17,7 @@ filter_out = [
 ]
 usernames_ = []
 time_now = datetime.now()
+times_added = []
 
 @app.route('/Submitted')
 def Submit():
@@ -29,6 +30,7 @@ def Submit():
 def HOME_PAGE():
 	if request.method == 'POST':
 		usernames_.append(request.form['Username'])
+		times_added.append(time_now.strftime("%H:%M:%S"))
 		for i in filter_out:
 			for x in range(len(usernames_)):
 				if i in usernames_[x].lower():
@@ -36,7 +38,7 @@ def HOME_PAGE():
 					return '<h1>Username is bad.</h1> <a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'
 		return render_template('submit.html', username=usernames_)
 	else:
-		return render_template("userSetup.html", username=usernames_)
+		return render_template("userSetup.html", username=usernames_, times_added=times_added)
 
 @app.route('/about')
 def ABOUT_PAGE():

@@ -14,7 +14,9 @@
 </div>
 {% if username|length >= 1 %}
 {% for i in username %}
-<h1>Users Setup(So Far): {{ i }} AT TIME {{ time_now.strftime(%H:%M:%S) }}</h1>
+{% for x in times_added %}
+<h1>Users Setup(So Far): {{ i }} AT TIME {{ x }}</h1>
+{% endfor %}
 {% endfor %}
 {% endif %}
 {% endblock %}
