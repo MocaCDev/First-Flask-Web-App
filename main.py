@@ -28,8 +28,9 @@ def HOME_PAGE():
 	if request.method == 'POST':
 		usernames_.append(request.form['Username'])
 		for i in filter_out:
-			for x in usernames_:
-				if i in x:
+			for x in range(len(usernames_)):
+				if i in usernames_[x]:
+					del usernames_[x]
 					return '<h1>Username is bad.</h1> <button type="submit"><a href="/" style="color:white;text-decoration:none">BACK</a></button>'
 		return render_template('submit.html', username=usernames_)
 	else:
