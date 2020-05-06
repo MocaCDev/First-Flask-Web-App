@@ -16,6 +16,7 @@ filter_out = [
 	'suck'
 ]
 usernames_ = []
+time_now = datetime.datetime.now()
 
 @app.route('/Submitted')
 def Submit():
@@ -27,7 +28,7 @@ def Submit():
 @app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
 	if request.method == 'POST':
-		usernames_.append(request.form['Username']+'(TIME {})'.format(datetime.datetime.now()))
+		usernames_.append(request.form['Username']+'(TIME {})'.format(time_now.strftime("%H:%M:%S")))
 		for i in filter_out:
 			for x in range(len(usernames_)):
 				if i in usernames_[x].lower():
