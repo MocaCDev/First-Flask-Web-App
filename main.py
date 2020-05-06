@@ -9,7 +9,7 @@ from flask import (
 )
 
 app = Flask(__name__)
-username_ = ''
+username_ = 'AIDAN'
 
 @app.route('/Submit')
 def Submit():
