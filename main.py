@@ -13,10 +13,8 @@ username_ = 'AIDAN'
 
 @app.route('/Submitted')
 def Submit():
-	if request.method == 'POST':
-		return render_template('home.html', username=username_)
-	else:
-		return render_template('submit.html')
+	return render_template('home.html', username=username_)
+
 
 """
 	Home Page is the page where user will enter credentials
