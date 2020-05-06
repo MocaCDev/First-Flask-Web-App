@@ -10,10 +10,6 @@ from flask import (
 
 app = Flask(__name__)
 
-@app.route('/Submit', methods=['POST','GET'])
-def Submit():
-	return render_template('submit.html')
-
 """
 	Home Page is the page where user will enter credentials
 """
