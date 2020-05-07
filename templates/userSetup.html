@@ -10,18 +10,13 @@
 	<button type="submit" id="ShowBadNames">Show Bad Names</button>
 	<!-- Used only of above button is clicked -->
 	<p id="Show"></p>
+	<button type="submit" id="HideInfo"></span>
 	<script>
 		document.getElementById('ShowBadNames').onclick = function() {
-			document.getElementById('Show').innerText = "{{ badNames }}";
+			document.getElementById('Show').innerText = {{ badNames }};
 
-			// Creating Hide Button
-			let HideNames = document.createElement('button');
-			HideNames.id = "HideNames";
-			let TextContent = document.createTextNode('Hide Bad Names');
-			HideNames.appendChild(TextContent);
-
-			// Seeing if button was clicked
-			document.getElementById('HideNames').onclick = function(){
+			// Seeing if HideInfo button was clicked
+			document.getElementById('HideInfo').onclick = function(){
 				// Just setting the paragraph to empty string
 				document.getElementById('Show').innerText = '';
 			}
