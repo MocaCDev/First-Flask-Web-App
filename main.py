@@ -48,7 +48,10 @@ def HOME_PAGE():
 					message='<h3>Username %s is bad.</h3><br><p>Contains the word: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(usernames_[x],i)
 					del usernames_[x]
 					return message
-		return render_template('submit.html', username=usernames_)
+		if len(request.form['Username']) < 1:
+			return "ERROR"
+		elif len(request.form['Username']) > 1:
+			return render_template('submit.html', username=usernames_)
 	else:
 		return render_template("userSetup.html", username=usernames_, badNames=filter_out)
 
