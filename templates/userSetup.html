@@ -16,7 +16,7 @@
 		<span id="Show"></span>
 		<script>
 			document.getElementById('ShowBadNames').onclick = function() {
-				document.getElementById('Show').innerHTML = "<p>{{ badNames }}</p>"
+				document.getElementById('Show').innerHTML = "{% for i in badNames %}<p>{{ i }}</p>{% endfor %}"
 
 				// Adding "Hide Information" button
 				let HideInfoBtn = document.createElement('button');
