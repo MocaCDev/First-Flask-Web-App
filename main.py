@@ -23,10 +23,10 @@ app = Flask(__name__)
 # NAMES TO FILTER OUT
 # don't even bother reading these...it is just needed so no innapropriate names are inputted
 filter_out = [
-	'fuck','dick','pussy','bombed','sex','porn','porno',
-	'suck','xnxx','pornhub','cunt','slut','hoe','whore',
-	'shit','penis','cock','vagina','boobs','anal','ass',
-	'ball sack','cum','sperm'
+	'fuck','dick','pussy','bitch','nigga','bombed','sex',
+	'porn','porno','suck','xnxx','pornhub','cunt','slut',
+	'hoe','whore','shit','penis','cock','vagina','boobs',
+	'anal','ass','ball sack','cum','sperm'
 ]
 usernames_ = []
 #time_now = datetime.now().strftime("%H:%M:%S")
