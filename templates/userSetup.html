@@ -35,9 +35,9 @@
 			}
 		</script>
 </div>
+{% if username|length >= 1 %}
 </br><h2>ADDED USERS</h2>
 </hr>
-{% if username|length >= 1 %}
 {% for i in username %}
 <p>Added Username: {{ i }}</p>
 {% endfor %}
