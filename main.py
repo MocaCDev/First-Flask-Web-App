@@ -50,7 +50,7 @@ def HOME_PAGE():
 					return message
 		return render_template('submit.html', username=usernames_)
 	else:
-		return render_template("userSetup.html", username=usernames_)
+		return render_template("userSetup.html", username=usernames_, badNames=filter_out)
 
 @app.route('/about')
 def ABOUT_PAGE():

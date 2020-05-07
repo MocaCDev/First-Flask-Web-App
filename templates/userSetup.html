@@ -7,6 +7,13 @@
 {% block body %}
 <h1>Home Page</h1></br>
 <div class="Username">
+	<button type="submit" id="ShowBadNames">Show Bad Names</button>
+	<script>
+		document.getElementById('ShowBadNames').onClick = function() {
+			let NewPara = document.createElement('p');
+			NewPara.innerText = "{{ badNames }}"
+		}
+	</script>
 	<form action="/" method="POST">
 		<input type="text" name="Username" id="Username"/>
 		<input type="Submit" value="Submit"/>
