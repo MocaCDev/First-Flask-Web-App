@@ -41,18 +41,17 @@ def Submit():
 @app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
 	if request.method == 'POST':
-		usernames_.append(request.form['Username'])
-		for i in filter_out:
-			for x in range(len(usernames_)):
-				if i in usernames_[x].lower():
-					message='<h3>Username %s is bad.</h3><br><p>Contains the word: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(usernames_[x],i)
-					del usernames_[x]
-					return message
-		if len(request.form['Username']) < 1:
-			del usernames_[request.form['Username']]
+		if len(request.form['Username']) > 1:
+			usernames_.append(request.form['Username'])
+			for i in filter_out:
+				for x in range(len(usernames_)):
+					if i in usernames_[x].lower():
+						message='<h3>Username %s is bad.</h3><br><p>Contains the word: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(usernames_[x],i)
+						del usernames_[x]
+						return message
+			return render_template('submit.html',username=usernames_)
+		else:
 			return render_template('userSetup.html',username=usernames_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters")
-		elif len(request.form['Username']) > 1:
-			return render_template('submit.html', username=usernames_)
 	else:
 		return render_template("userSetup.html", username=usernames_, badNames=filter_out)
 
