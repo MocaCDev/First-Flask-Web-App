@@ -51,7 +51,7 @@ def HOME_PAGE():
 						return message
 			return render_template('submit.html',username=usernames_)
 		else:
-			return render_template('userSetup.html',username=usernames_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters")
+			return render_template('userSetup.html',username=usernames_,badNames=filter_out, ERR_MSG="</br><b><i>ERROR: Username was empty. Must have at least 2 characters</i></b></br>")
 	else:
 		return render_template("userSetup.html", username=usernames_, badNames=filter_out)
 
