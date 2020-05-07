@@ -45,8 +45,9 @@ def HOME_PAGE():
 		for i in filter_out:
 			for x in range(len(usernames_)):
 				if i in usernames_[x].lower():
+					message='<h1>Username %s is bad.</h1> <a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%usernames_[x]
 					del usernames_[x]
-					return '<h1>Username is bad.</h1> <a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'
+					return message
 		return render_template('submit.html', username=usernames_)
 	else:
 		return render_template("userSetup.html", username=usernames_)
