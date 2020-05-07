@@ -45,7 +45,7 @@ def HOME_PAGE():
 		for i in filter_out:
 			for x in range(len(usernames_)):
 				if i in usernames_[x].lower():
-					message='<h1>Username %s is bad.</h1> <a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%usernames_[x]
+					message='<h3>Username %s is bad.</h3><br><p>Contains the word: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(usernames_[x],i)
 					del usernames_[x]
 					return message
 		return render_template('submit.html', username=usernames_)
