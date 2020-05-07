@@ -49,6 +49,7 @@ def HOME_PAGE():
 					del usernames_[x]
 					return message
 		if len(request.form['Username']) < 1:
+			del usernames_[request.form['Username']]
 			return render_template('userSetup.html',username=usernames_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters")
 		elif len(request.form['Username']) > 1:
 			return render_template('submit.html', username=usernames_)
