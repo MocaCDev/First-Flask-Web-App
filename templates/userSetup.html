@@ -11,8 +11,20 @@
 	<!-- Used only of above button is clicked -->
 	<p id="Show"></p>
 	<script>
-		document.getElementById('ShowBadNames').onClick = function() {
-			console.log('{{ badNames }}')
+		document.getElementById('ShowBadNames').onclick = function() {
+			document.getElementById('Show').innerText = "{{ badNames }}";
+
+			// Creating Hide Button
+			let HideNames = document.createElement('button');
+			HideNames.id = "HideNames";
+			let TextContent = document.createTextNode('Hide Bad Names');
+			HideNames.appendChild(TextContent);
+
+			// Seeing if button was clicked
+			document.getElementById('HideNames').onclick = function(){
+				// Just setting the paragraph to empty string
+				document.getElementById('Show').innerText = '';
+			}
 		}
 	</script>
 	<form action="/" method="POST">
