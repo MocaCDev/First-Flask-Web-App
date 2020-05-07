@@ -8,11 +8,11 @@
 <h1>Home Page</h1></br>
 <div class="Username">
 	<button type="submit" id="ShowBadNames">Show Bad Names</button>
+	<!-- Used only of above button is clicked -->
+	<p id="Show"></p>
 	<script>
 		document.getElementById('ShowBadNames').onClick = function() {
-			let NewPara = document.createElement('p');
-			let ElementText = document.createTextNode("{{ badNames }}");
-			NewPara.appendChild(ElementText);
+			document.getElementById('Show').innerText = "{{badNames}}";
 		}
 	</script>
 	<form action="/" method="POST">
