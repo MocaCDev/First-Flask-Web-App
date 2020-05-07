@@ -9,11 +9,11 @@
 <div class="Username">
 	<button type="submit" id="ShowBadNames">Show Bad Names</button>
 	<!-- Used only of above button is clicked -->
-	<p id="Show"></p>
-	<button type="submit" id="HideInfo"></span>
+	<span id="Show"></span>
+	<button type="submit" id="HideInfo"></button>
 	<script>
 		document.getElementById('ShowBadNames').onclick = function() {
-			document.getElementById('Show').innerText = {{ badNames }};
+			document.getElementById('Show').innerHTML = "<p>{{ badNames }}</p>"
 
 			// Seeing if HideInfo button was clicked
 			document.getElementById('HideInfo').onclick = function(){
