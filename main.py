@@ -50,7 +50,7 @@ def HOME_PAGE():
 
 			for i in range(len(old['USERNAMES'])):
 				if old['USERNAMES'][i] not in usernames_:
-					usernames_.append(i)
+					usernames_.append(old['USERNAMES'][i])
 
 		if len(request.form['Username']) > 1:
 			inIt = None
