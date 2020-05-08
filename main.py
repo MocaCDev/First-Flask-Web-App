@@ -64,7 +64,8 @@ def HOME_PAGE():
 					inIt=False
 			
 			if inIt != None:
-				usernames_.append(request.form['Username'])
+				if request.form['Username'] not in usernames_:
+					usernames_.append(request.form['Username'])
 
 			DATA = {'USERNAMES':usernames_}
 			with open('username_info.json','w') as file:
