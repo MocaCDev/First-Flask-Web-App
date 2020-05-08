@@ -44,7 +44,9 @@ def Submit():
 """
 @app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
+	lastUsernameAdded=''
 	if request.method == 'POST':
+		lastUsernameAdded=request.form['Username']
 		# This will append all previous added usernames
 		if os.path.exists('username_info.json'):
 			old = json.loads(str(open('username_info.json','r').read()))
@@ -105,13 +107,11 @@ def HOME_PAGE():
 		if os.path.exists('username_info.json'):
 			info = json.loads(str(open('username_info.json','r').read()))
 			usernames = []
-			lastIndex = len(info['USERNAMES'])-1
 			for i in info['USERNAMES']:
 				usernames.append(i)
-			return render_template('userSetup.html',username=usernames,email=emails_,badNames=filter_out,lastUsername=usernames[lastIndex])
+			return render_template('userSetup.html',username=usernames,email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
 		else:
-			lastIndex = len(usernames_)-1
-			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out,lastUsername=usernames_[lastIndex])
+			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
 
 @app.route('/about')
 def ABOUT_PAGE():
