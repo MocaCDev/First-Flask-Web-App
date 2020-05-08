@@ -55,13 +55,12 @@ def HOME_PAGE():
 			for i in filter_out:
 				for x in range(len(usernames_)):
 					if i in usernames_[x].lower():
-						for l in range(len(usernames_[x])):
-							if usernames_[x][l].lower() == i[0] and usernames_[x][i[0]-1] == '':
-								message='<h3>Username %s is bad.</h3><br><p>Contains the word: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(usernames_[x],i)
-								del usernames_[x]
-								return message
-							else:
-								return render_template('submit.html', username=usernames_, WARNING="Warning..We saw the name %s contains the word %s in it..." % (usernames_[x],i))
+						if usernames_[x][0].lower() == i[0]:
+							message='<h3>Username %s is bad.</h3><br><p>Contains the word: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(usernames_[x],i)
+							del usernames_[x]
+							return message
+						else:
+							return render_template('submit.html', username=usernames_, WARNING="Warning..We saw the name %s contains the word %s in it..." % (usernames_[x],i))
 			return render_template('submit.html',username=usernames_)
 		else:
 			# This repeates in second else statement..
