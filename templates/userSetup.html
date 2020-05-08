@@ -13,7 +13,9 @@
 		<input type="text" name="Email" id="Email" placeholder="Email"/>
 		<input type="submit" value="Submit"/></br>
 	</form>
+	{% if ERR_MSG %}
 	</br><b><i>{{ ERR_MSG }}</i></p></br>
+	{% endif %}
 	<button type="submit" id="ShowBadNames">Show Bad Names</button>
 		<!-- Used only of above button is clicked -->
 		<span id="Show"></span>
