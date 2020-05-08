@@ -71,8 +71,8 @@ def HOME_PAGE():
 				))
 				file.flush()
 				file.close()
-			for i in range(len(usernames_)):
-				for x in filter_out:
+			for x in filter_out:
+				for i in range(len(usernames_)):
 					if x in usernames_[i]:
 						del usernames_[i]
 			return render_template('submit.html',username=usernames_)
