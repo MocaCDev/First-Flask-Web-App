@@ -1,6 +1,6 @@
 """ ------ FLASK WEB APP ------"""
 """ ------ LINUX/UNIX BASED ------"""
-import os
+import os, json
 #from datetime import datetime
 try:
 	from flask import (
@@ -43,6 +43,15 @@ def HOME_PAGE():
 	if request.method == 'POST':
 		if len(request.form['Username']) > 1:
 			usernames_.append(request.form['Username'])
+			data = {'USERNAMES':usernames_}
+			with open('username_info.json','w') as file:
+				file.write(json.dumps(
+					data,
+					indent=2,
+					sort_keys=False
+				))
+				file.flush()
+				file.close()
 			for i in filter_out:
 				for x in range(len(usernames_)):
 					if i in usernames_[x].lower():
@@ -53,7 +62,11 @@ def HOME_PAGE():
 		else:
 			return render_template('userSetup.html',username=usernames_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters")
 	else:
-		return render_template("userSetup.html", username=usernames_, badNames=filter_out)
+		if os.path.exists('username_info.json'):
+			info = json.loads(str(open('username_info.json','r').read()))
+			return info
+		else:
+			return render_template("userSetup.html", username=usernames_, badNames=filter_out)
 
 @app.route('/about')
 def ABOUT_PAGE():
