@@ -64,9 +64,12 @@ def HOME_PAGE():
 	else:
 		if os.path.exists('username_info.json'):
 			info = json.loads(str(open('username_info.json','r').read()))
-			return info
+			usernames = []
+			for i in info['USERNAMES']:
+				usernames.append(i)
+			return render_template('userSetup.html',username=usernames,badNames=filter_out)
 		else:
-			return render_template("userSetup.html", username=usernames_, badNames=filter_out)
+			return render_template("userSetup.html", badNames=filter_out)
 
 @app.route('/about')
 def ABOUT_PAGE():
