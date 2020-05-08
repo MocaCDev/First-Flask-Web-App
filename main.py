@@ -48,7 +48,10 @@ def HOME_PAGE():
 						return '<h3>Username %s is bad.</h3><br><p>Word Found: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],i)
 					else:
 						usernames_.append(request.form['Username'])
-						return render_template('submit.html',username=usernames_)
+						break
+				else:
+					usernames_.append(request.form['Username'])
+					break
 			return render_template('submit.html',username=usernames_)
 		else:
 			# This repeates in second else statement..
