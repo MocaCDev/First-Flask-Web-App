@@ -40,10 +40,14 @@
 	</script>
 </div>
 {% if username|length >= 1 %}
+{% if email|length >= 1 %}
 </br><h2>ADDED USERS</h2>
 <hr>
 {% for i in username %}
-<p>Added Username: {{ i }}</p>
+{% for x in email %}
+<p>Added Username: {{ i }}({{ x }})</p>
 {% endfor %}
+{% endfor %}
+{% endif %}
 {% endif %}
 {% endblock %}
