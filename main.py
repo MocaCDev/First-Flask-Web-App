@@ -105,12 +105,12 @@ def HOME_PAGE():
 		if os.path.exists('username_info.json'):
 			info = json.loads(str(open('username_info.json','r').read()))
 			usernames = []
-			lastIndex = len(info['USERNAMES'])
+			lastIndex = len(info['USERNAMES'])-1
 			for i in info['USERNAMES']:
 				usernames.append(i)
 			return render_template('userSetup.html',username=usernames,email=emails_,badNames=filter_out,lastUsername=usernames[lastIndex])
 		else:
-			lastIndex = len(usernames_)
+			lastIndex = len(usernames_)-1
 			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out,lastUsername=usernames_[lastIndex])
 
 @app.route('/about')
