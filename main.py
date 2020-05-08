@@ -50,6 +50,7 @@ def HOME_PAGE():
 						usernames_.append(request.form['Username'])
 						return render_template('submit.html',username=usernames_)
 						break
+			return render_template('submit.html',username=usernames_)
 		else:
 			# This repeates in second else statement..
 			# To-Do: Possibly add a better way to check if the file exists?
