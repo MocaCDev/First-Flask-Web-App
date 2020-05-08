@@ -49,6 +49,7 @@ def HOME_PAGE():
 				usernames_.append(i)
 
 		if len(request.form['Username']) > 1:
+			inIt = None
 			for i in filter_out:
 				if i in request.form['Username'].lower():
 					if request.form['Username'][0].lower() == i[0]:
@@ -57,8 +58,11 @@ def HOME_PAGE():
 						usernames_.append(request.form['Username'])
 						break
 				else:
-					usernames_.append(request.form['Username'])
+					inIt = False
 					break
+			
+			if inIt != None:
+				usernames_.append(request.form['Username'])
 
 			DATA = {'USERNAMES':usernames_}
 			with open('username_info.json','w') as file:
