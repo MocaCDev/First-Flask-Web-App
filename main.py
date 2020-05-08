@@ -47,19 +47,27 @@ def HOME_PAGE():
 					return '<h3>Username %s is bad.</h3><br><p>Word Found: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],i)
 				else:
 					usernames_.append(request.form['Username'])
-					return render_template('submit.html',username=usernames_)
-			"""
-			for i in filter_out:
-				for x in range(len(usernames_)):
-					if i in usernames_[x].lower():
-						if usernames_[x][0].lower() == i[0]:
-							message='<h3>Username %s is bad.</h3><br><p>Contains the word: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(usernames_[x],i)
-							del usernames_[x]
-							return message
-						else:
-							return render_template('submit.html', username=usernames_, WARNING="Warning..We saw the name %s contains the word %s in it..." % (usernames_[x],i))
-			"""
-			return render_template('submit.html',username=usernames_)
+					DATA = {'USERNAMES':usernames_}
+					with open('username_info.json','w') as file:
+						file.write(json.dumps(
+							DATA,
+							indent=2,
+							sort_keys=False
+						))
+						file.flush()
+						file.close()
+						"""
+						for i in filter_out:
+							for x in range(len(usernames_)):
+								if i in usernames_[x].lower():
+									if usernames_[x][0].lower() == i[0]:
+										message='<h3>Username %s is bad.</h3><br><p>Contains the word: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(usernames_[x],i)
+										del usernames_[x]
+										return message
+									else:
+										return render_template('submit.html', username=usernames_, WARNING="Warning..We saw the name %s contains the word %s in it..." % (usernames_[x],i))
+						"""
+						return render_template('submit.html',username=usernames_)
 		else:
 			# This repeates in second else statement..
 			# To-Do: Possibly add a better way to check if the file exists?
