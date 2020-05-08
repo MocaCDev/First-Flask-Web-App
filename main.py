@@ -98,18 +98,18 @@ def HOME_PAGE():
 				users = []
 				for i in info['USERNAMES']:
 					users.append(i)
-				return render_template('userSetup.html',username=users,email=emails_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters")
+				return render_template('userSetup.html',username=users,email=emails_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastUsername=request.form['Username'])
 			else:
-				return render_template('userSetup.html',username=usernames_,email=emails_,badNames=filter_out,ERR_MSG="ERROR: Username was empty. Must have at least 2 characters")
+				return render_template('userSetup.html',username=usernames_,email=emails_,badNames=filter_out,ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastUsername=request.form['Username'])
 	else:
 		if os.path.exists('username_info.json'):
 			info = json.loads(str(open('username_info.json','r').read()))
 			usernames = []
 			for i in info['USERNAMES']:
 				usernames.append(i)
-			return render_template('userSetup.html',username=usernames,email=emails_,badNames=filter_out)
+			return render_template('userSetup.html',username=usernames,email=emails_,badNames=filter_out,lastUsername=request.form['Username'])
 		else:
-			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out)
+			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out,lastUsername=request.form['Username'])
 
 @app.route('/about')
 def ABOUT_PAGE():
