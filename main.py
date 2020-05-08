@@ -60,7 +60,14 @@ def HOME_PAGE():
 						return message
 			return render_template('submit.html',username=usernames_)
 		else:
-			return render_template('userSetup.html',username=usernames_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters")
+			# This repeates in second else statement..
+			# To-Do: Possibly add a better way to check if the file exists?
+			if os.path.exists('username_info.json'):
+				info = json.loads(str(open('username_info.json','r').read()))
+				useranmes = []
+				for i in info['USERNAMES']:
+					useranmes.append(i)
+			return render_template('userSetup.html',username=useranmes,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters")
 	else:
 		if os.path.exists('username_info.json'):
 			info = json.loads(str(open('username_info.json','r').read()))
