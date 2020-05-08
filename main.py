@@ -53,15 +53,33 @@ def HOME_PAGE():
 					usernames_.append(request.form['Username'])
 					break
 
-			DATA = {'USERNAMES':usernames_}
-			with open('username_info.json','w') as file:
-				file.write(json.dumps(
-					DATA,
-					indent=2,
-					sort_keys=False
-				))
-				file.flush()
-				file.close()
+			if not os.path.exists('username_info'):
+				DATA = {'USERNAMES':usernames_}
+				with open('username_info.json','w') as file:
+					file.write(json.dumps(
+						DATA,
+						indent=2,
+						sort_keys=False
+					))
+					file.flush()
+					file.close()
+			else:
+				old = json.loads(str(open('username_info.json','r').read()))
+				
+				prev_users = []
+				for i in old['USERNAMES']:
+					prev_users.append(i)
+				for x in prev_users:
+					usernames_.append(x)
+				DATA = {'USERNAMES':usernames_}
+				with open('username_info.json','w') as file:
+					file.write(json.dumps(
+						DATA,
+						indent=2,
+						sort_keys=False
+					))
+					file.flush()
+					file.close()
 			return render_template('submit.html',username=usernames_)
 		else:
 			# This repeates in second else statement..
