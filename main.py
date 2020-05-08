@@ -63,7 +63,7 @@ def HOME_PAGE():
 			if len(request.form['Username']) < 1 and len(request.form['Email']) < 1:
 				return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email and Username input was left blank...please complete the inputs")
 			else:
-				return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email input was left blank...please complete the Email input")
+				return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email input was left blank...please complete the Email input",lastUsername=request.form['Username'])
 
 		#if len(request.form['Username']) > 1:
 			inIt = None
