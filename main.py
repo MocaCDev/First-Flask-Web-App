@@ -46,7 +46,7 @@ def HOME_PAGE():
 				if i in request.form['Username'] and request.form['Username'][0].lower() == i[0]:
 					message='<h3>Username %s is bad.</h3><br><p>Contains the word: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],i)
 					return message
-				else:
+				elif i not in request.form['Username'] and not request.form['Username'][0]==i[0]:
 					usernames_.append(request.form['Username'])
 					data = {'USERNAMES':usernames_}
 					with open('username_info.json','w') as file:
