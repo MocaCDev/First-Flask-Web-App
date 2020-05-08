@@ -65,7 +65,7 @@ def HOME_PAGE():
 			else:
 				return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email input was left blank...please complete the Email input",lastUsername=request.form['Username'])
 
-		#if len(request.form['Username']) > 1:
+		if len(request.form['Username']) > 1:
 			inIt = None
 			for i in range(len(filter_out)):
 				if filter_out[i] in request.form['Username'].lower():
@@ -90,7 +90,7 @@ def HOME_PAGE():
 				file.flush()
 				file.close()
 			return render_template('submit.html',username=usernames_,email=emails_)
-		#else:
+		else:
 			# This repeates in second else statement..
 			# To-Do: Possibly add a better way to check if the file exists?
 			if os.path.exists('username_info.json'):
