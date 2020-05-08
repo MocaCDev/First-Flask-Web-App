@@ -42,16 +42,23 @@ def Submit():
 def HOME_PAGE():
 	if request.method == 'POST':
 		if len(request.form['Username']) > 1:
-			usernames_.append(request.form['Username'])
-			data = {'USERNAMES':usernames_}
-			with open('username_info.json','w') as file:
-				file.write(json.dumps(
-					data,
-					indent=2,
-					sort_keys=False
-				))
-				file.flush()
-				file.close()
+			for i in filter_out:
+				if i in request.form['Username'] and request.form['Username'][0].lower() == i[0]:
+					message='<h3>Username %s is bad.</h3><br><p>Contains the word: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],i)
+					return message
+				else:
+					usernames_.append(request.form['Username'])
+					data = {'USERNAMES':usernames_}
+					with open('username_info.json','w') as file:
+						file.write(json.dumps(
+							data,
+							indent=2,
+							sort_keys=False
+						))
+						file.flush()
+						file.close()
+					return render_template('submit.html', username=usernames_, WARNING="Warning..We saw the name %s contains the word %s in it..." % (request.form['Username'],i))
+			"""
 			for i in filter_out:
 				for x in range(len(usernames_)):
 					if i in usernames_[x].lower():
@@ -61,6 +68,7 @@ def HOME_PAGE():
 							return message
 						else:
 							return render_template('submit.html', username=usernames_, WARNING="Warning..We saw the name %s contains the word %s in it..." % (usernames_[x],i))
+			"""
 			return render_template('submit.html',username=usernames_)
 		else:
 			# This repeates in second else statement..
