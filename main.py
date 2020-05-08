@@ -32,6 +32,7 @@ filter_out = [
 	'anal','ass','ball sack','cum','sperm'
 ]
 usernames_ = []
+emails_ = []
 #time_now = datetime.now().strftime("%H:%M:%S")
 
 @app.route('/Submitted')
@@ -51,6 +52,11 @@ def HOME_PAGE():
 			for i in range(len(old['USERNAMES'])):
 				if old['USERNAMES'][i] not in usernames_:
 					usernames_.append(old['USERNAMES'][i])
+		
+		# There is no checking for bad names in this. It is an email.
+		# If there is, perhaps, a bad name in the email, and we return an error to the webpage saying the name is invalid
+		# then the user would either a. Have to create a new email or b. type a fake email
+		emails_.append(request.form['Email'])
 
 		if len(request.form['Username']) > 1:
 			inIt = None
@@ -76,7 +82,7 @@ def HOME_PAGE():
 				))
 				file.flush()
 				file.close()
-			return render_template('submit.html',username=usernames_)
+			return render_template('submit.html',username=usernames_,email=emails_)
 		else:
 			# This repeates in second else statement..
 			# To-Do: Possibly add a better way to check if the file exists?

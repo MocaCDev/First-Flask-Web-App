@@ -6,7 +6,9 @@
 
 {% block body %}
 {% for i in username %}
-<h4>Submit Success for {{ i }}</br></h4>
+{% for x in email %}
+<h4>Submit Success for {{ i }}({{x}})</br></h4>
+{% endfor %}
 {% if ERROR %}
 <h5>{{ ERROR }}</h5>
 {% endif %}

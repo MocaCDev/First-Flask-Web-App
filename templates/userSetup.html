@@ -17,27 +17,27 @@
 	</br><b><i>{{ ERR_MSG }}</i></p></br>
 	{% endif %}
 	<button type="submit" id="ShowBadNames">Show Bad Names</button>
-		<!-- Used only of above button is clicked -->
-		<span id="Show"></span>
-		<script>
-			document.getElementById('ShowBadNames').onclick = function() {
-				document.getElementById('Show').innerHTML = "{% for i in badNames %}<p>{{ i }}</p>{% endfor %}"
+	<!-- Used only of above button is clicked -->
+	<span id="Show"></span>
+	<script>
+		document.getElementById('ShowBadNames').onclick = function() {
+			document.getElementById('Show').innerHTML = "{% for i in badNames %}<p>{{ i }}</p>{% endfor %}"
 
-				// Adding "Hide Information" button
-				let HideInfoBtn = document.createElement('button');
-				HideInfoBtn.id = "HideInfo";
-				let HideInfoBtnTxt = document.createTextNode('Hide Information');
-				HideInfoBtn.appendChild(HideInfoBtnTxt);
+			// Adding "Hide Information" button
+			let HideInfoBtn = document.createElement('button');
+			HideInfoBtn.id = "HideInfo";
+			let HideInfoBtnTxt = document.createTextNode('Hide Information');
+			HideInfoBtn.appendChild(HideInfoBtnTxt);
 
-				document.getElementById('Show').appendChild(HideInfoBtn);
+			document.getElementById('Show').appendChild(HideInfoBtn);
 
-				// Seeing if HideInfo button was clicked
-				document.getElementById('HideInfo').onclick = function(){
-					// Just setting the paragraph to empty string
-					document.getElementById('Show').innerText = '';
-				}
+			// Seeing if HideInfo button was clicked
+			document.getElementById('HideInfo').onclick = function(){
+				// Just setting the paragraph to empty string
+				document.getElementById('Show').innerText = '';
 			}
-		</script>
+		}
+	</script>
 </div>
 {% if username|length >= 1 %}
 </br><h2>ADDED USERS</h2>
