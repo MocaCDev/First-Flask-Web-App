@@ -11,13 +11,16 @@ try:
 	)
 except ImportError as IE:
 	print("IE ERR: %s" % IE)
-	os.system('pip3 install -r requirements.txt')
-	from flask import (
-		Flask,
-		render_template,
-		#url_for,
-		request
-	)
+	try:
+		os.system('pip3 install -r requirements.txt')
+		from flask import (
+			Flask,
+			render_template,
+			#url_for,
+			request
+		)
+	except:
+		raise ImportError('pip3 is not installed. pip3 is needed in order to download imported module "Flask"')
 
 app = Flask(__name__)
 # NAMES TO FILTER OUT
