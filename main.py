@@ -52,6 +52,16 @@ def HOME_PAGE():
 				else:
 					usernames_.append(request.form['Username'])
 					break
+			if len(usernames_)>1:
+				DATA = {'USERNAMES':usernames_}
+				with open('username_info.json','w') as file:
+					file.write(json.dumps(
+						DATA,
+						indent=2,
+						sort_keys=False
+					))
+					file.flush()
+					file.close()
 			return render_template('submit.html',username=usernames_)
 		else:
 			# This repeates in second else statement..
