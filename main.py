@@ -41,16 +41,19 @@ def Submit():
 @app.route('/', methods=['POST','GET'])
 def HOME_PAGE():
 	if request.method == 'POST':
+		# This will append all previous added usernames
 		if os.path.exists('username_info.json'):
 			old = json.loads(str(open('username_info.json','r').read()))
 
 			for i in old['USERNAMES']:
 				usernames_.append(i)
+
 		if len(request.form['Username']) > 1:
 			for i in filter_out:
 				if i in request.form['Username']:
 					if request.form['Username'][0].lower() == i[0]:
 						return '<h3>Username %s is bad.</h3><br><p>Word Found: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],i)
+						break
 					else:
 						usernames_.append(request.form['Username'])
 						break
