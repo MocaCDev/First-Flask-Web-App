@@ -62,6 +62,12 @@ def HOME_PAGE():
 						usernames_.append(request.form['Username'])
 						break
 
+			for x in filter_out:
+				for i in range(len(usernames_)):
+					if x in usernames_[i]:
+						return render_template('submit.html',ERROR="Bad Name: %s" % usernames_[i])
+						del usernames_[i]
+						
 			DATA = {'USERNAMES':usernames_}
 			with open('username_info.json','w') as file:
 				file.write(json.dumps(
@@ -71,10 +77,6 @@ def HOME_PAGE():
 				))
 				file.flush()
 				file.close()
-			for x in filter_out:
-				for i in range(len(usernames_)):
-					if x in usernames_[i]:
-						del usernames_[i]
 			return render_template('submit.html',username=usernames_)
 		else:
 			# This repeates in second else statement..
