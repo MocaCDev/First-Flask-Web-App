@@ -50,10 +50,9 @@ def HOME_PAGE():
 
 		if len(request.form['Username']) > 1:
 			for i in filter_out:
-				if i in request.form['Username']:
+				if i in request.form['Username'].lower():
 					if request.form['Username'][0].lower() == i[0]:
 						return '<h3>Username %s is bad.</h3><br><p>Word Found: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],i)
-						break
 					else:
 						if request.form['Username'][0].lower() != i[0]:
 							usernames_.append(request.form['Username'])
@@ -72,6 +71,10 @@ def HOME_PAGE():
 				))
 				file.flush()
 				file.close()
+			for i in range(len(usernames_)):
+				for x in filter_out:
+					if x in usernames_[i]:
+						del usernames_[i]
 			return render_template('submit.html',username=usernames_)
 		else:
 			# This repeates in second else statement..
