@@ -48,21 +48,17 @@ def HOME_PAGE():
 						return '<h3>Username %s is bad.</h3><br><p>Word Found: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],i)
 					else:
 						usernames_.append(request.form['Username'])
+						return render_template('submit.html',username=usernames_)
 						break
-				
-			if len(usernames_)>0:
-				return render_template('submit.html',username=usernames_)
-			else:
-				return render_template('userSetup.html',badNames=filter_out)
 		else:
 			# This repeates in second else statement..
 			# To-Do: Possibly add a better way to check if the file exists?
 			if os.path.exists('username_info.json'):
 				info = json.loads(str(open('username_info.json','r').read()))
-				useranmes = []
+				users = []
 				for i in info['USERNAMES']:
-					useranmes.append(i)
-			return render_template('userSetup.html',username=useranmes,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters")
+					users.append(i)
+			return render_template('userSetup.html',username=users,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters")
 	else:
 		if os.path.exists('username_info.json'):
 			info = json.loads(str(open('username_info.json','r').read()))
