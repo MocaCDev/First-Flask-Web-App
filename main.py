@@ -48,8 +48,9 @@ def HOME_PAGE():
 		if os.path.exists('username_info.json'):
 			old = json.loads(str(open('username_info.json','r').read()))
 
-			for i in old['USERNAMES']:
-				usernames_.append(i)
+			for i in range(len(old['USERNAMES'])):
+				if old['USERNAMES'][i] not in usernames_:
+					usernames_.append(i)
 
 		if len(request.form['Username']) > 1:
 			inIt = None
@@ -64,8 +65,7 @@ def HOME_PAGE():
 					inIt=False
 			
 			if inIt != None:
-				if request.form['Username'] not in usernames_:
-					usernames_.append(request.form['Username'])
+				usernames_.append(request.form['Username'])
 
 			DATA = {'USERNAMES':usernames_}
 			with open('username_info.json','w') as file:
