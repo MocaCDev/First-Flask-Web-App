@@ -49,7 +49,6 @@ def HOME_PAGE():
 					else:
 						usernames_.append(request.form['Username'])
 						return render_template('submit.html',username=usernames_)
-						break
 			return render_template('submit.html',username=usernames_)
 		else:
 			# This repeates in second else statement..
