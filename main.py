@@ -53,21 +53,10 @@ def HOME_PAGE():
 				if i in request.form['Username'].lower():
 					if request.form['Username'][0].lower() == i[0]:
 						return '<h3>Username %s is bad.</h3><br><p>Word Found: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],i)
-					else:
-						if request.form['Username'][0].lower() != i[0]:
-							usernames_.append(request.form['Username'])
-							break
 				else:
-					if i not in request.form['Username']:
-						usernames_.append(request.form['Username'])
-						break
+					usernames_.append(request.form['Username'])
+					break
 
-			for x in filter_out:
-				for i in range(len(usernames_)):
-					if x in usernames_[i]:
-						return render_template('submit.html',ERROR="Bad Name: %s" % usernames_[i])
-						del usernames_[i]
-						
 			DATA = {'USERNAMES':usernames_}
 			with open('username_info.json','w') as file:
 				file.write(json.dumps(
