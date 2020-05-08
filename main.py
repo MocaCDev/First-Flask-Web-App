@@ -50,16 +50,15 @@ def HOME_PAGE():
 
 		if len(request.form['Username']) > 1:
 			inIt = None
-			for i in filter_out:
-				if i in request.form['Username'].lower():
-					if request.form['Username'][0].lower() == i[0]:
-						return '<h3>Username %s is bad.</h3><br><p>Word Found: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],i)
+			for i in range(len(filter_out)):
+				if filter_out[i] in request.form['Username'].lower():
+					if request.form['Username'][0].lower() == filter_out[i][0]:
+						return '<h3>Username %s is bad.</h3><br><p>Word Found: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],filter_out[i])
 					else:
 						usernames_.append(request.form['Username'])
 						break
-				else:
-					inIt = False
-					break
+				if i == len(filter_out)-1 and not filter_out[i] in request.form['Username']:
+					inIt=False
 			
 			if inIt != None:
 				usernames_.append(request.form['Username'])
