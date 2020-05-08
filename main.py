@@ -61,7 +61,7 @@ def HOME_PAGE():
 								del usernames_[x]
 								return message
 							else:
-								return "</br><p>Warning..We saw the name %s contains the word %s in it...</p>" % (usernames_[x],i)
+								return render_template('submit.html', username=usernames_, WARNING="Warning..We saw the name %s contains the word %s in it..." % (usernames_[x],i))
 			return render_template('submit.html',username=usernames_)
 		else:
 			# This repeates in second else statement..
