@@ -56,7 +56,10 @@ def HOME_PAGE():
 		# There is no checking for bad names in this. It is an email.
 		# If there is, perhaps, a bad name in the email, and we return an error to the webpage saying the name is invalid
 		# then the user would either a. Have to create a new email or b. type a fake email
-		emails_.append(request.form['Email'])
+		if len(request.form['Email']) > 1:
+			emails_.append(request.form['Email'])
+		else:
+			return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email inut was left blank...please complete the Email input")
 
 		if len(request.form['Username']) > 1:
 			inIt = None
