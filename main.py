@@ -43,11 +43,12 @@ def HOME_PAGE():
 	if request.method == 'POST':
 		if len(request.form['Username']) > 1:
 			for i in filter_out:
-				if i in request.form['Username'] and request.form['Username'][0].lower()==i[0]:
-					return '<h3>Username %s is bad.</h3><br><p>Word Found: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],i)
-				else:
-					usernames_.append(request.form['Username'])
-					break
+				if i in request.form['Username']:
+					if request.form['Username'][0].lower() == i[0]:
+						return '<h3>Username %s is bad.</h3><br><p>Word Found: %s</p><a href="/" style="text-decoration:none"><button type="submit" style="background-color:black;color:white">Go Back</button></a>'%(request.form['Username'],i)
+					else:
+						usernames_.append(request.form['Username'])
+						break
 				
 			if len(usernames_)>0:
 				return render_template('submit.html',username=usernames_)
