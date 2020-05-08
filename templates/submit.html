@@ -7,7 +7,12 @@
 {% block body %}
 {% for i in username %}
 <h4>Submit Success for {{ i }}</br></h4>
-<h5>{{ ERROR }}</h5><h5>{{ WARNING }}</h5>
+{% if ERROR %}
+<h5>{{ ERROR }}</h5>
+{% endif %}
+{% if WARNING %}
+<h5>{{ WARNING }}</h5>
+{% endif %}
 {% endfor %}
 <button type="submit"><a href="/Submitted" style="color:white;text-decoration:none">Go Back</a></button>
 {% endblock %}
