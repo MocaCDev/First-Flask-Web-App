@@ -60,9 +60,15 @@ def HOME_PAGE():
 		else:
 			# Might as well check if they're both less than one
 			if len(request.form['Username']) < 1 and len(request.form['Email']) < 1:
-				return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email and Username input was left blank...please complete the inputs",lastUsers=lastUsers_)
+				if os.path.exists('username_info.json') and len(lastUsers_)>0:
+					return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email and Username input was left blank...please complete the inputs",lastUsers=lastUsers_)
+				else:
+					return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email and Username input was left blank...please complete the inputs")
 			else:
-				return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email input was left blank...please complete the Email input",lastUsername=request.form['Username'],lastUsers=lastUsers_)
+				if os.path.exists('username_info.json') and len(lastUsers_)>0:
+					return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email input was left blank...please complete the Email input",lastUsername=request.form['Username'],lastUsers=lastUsers_)
+				else:
+					return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email input was left blank...please complete the Email input",lastUsername=request.form['Username'])
 
 		if len(request.form['Username']) > 1:
 			inIt = None
@@ -101,7 +107,7 @@ def HOME_PAGE():
 				"""
 				return render_template('userSetup.html',lastUsers=lastUsers_,email=emails_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'])
 			else:
-				return render_template('userSetup.html',username=usernames_,email=emails_,badNames=filter_out,ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'],lastUsers=lastUsers_)
+				return render_template('userSetup.html',username=usernames_,email=emails_,badNames=filter_out,ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'])
 	else:
 		if os.path.exists('username_info.json') and len(lastUsers_)>0:
 			"""
@@ -112,7 +118,7 @@ def HOME_PAGE():
 			"""
 			return render_template('userSetup.html',lastUsers=lastUsers_,email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
 		else:
-			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded,lastUsers=lastUsers_)
+			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
 
 @app.route('/about')
 def ABOUT_PAGE():
