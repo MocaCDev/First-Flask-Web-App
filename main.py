@@ -108,7 +108,7 @@ def HOME_PAGE():
 				"""
 				return render_template('userSetup.html',lastUsers=lastUsers_[0],email=emails_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'])
 			else:
-				return render_template('userSetup.html',username=usernames_,email=emails_,badNames=filter_out,ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'])
+				return render_template('userSetup.html',username=usernames_,email=emails_,badNames=filter_out,ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'],lastUsers=lastUsers_)
 	else:
 		if os.path.exists('username_info.json'):
 			"""
@@ -119,7 +119,7 @@ def HOME_PAGE():
 			"""
 			return render_template('userSetup.html',lastUsers=lastUsers_,email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
 		else:
-			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
+			return render_template("userSetup.html",username=usernames_,lastUsers=lastUsers_, email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
 
 @app.route('/about')
 def ABOUT_PAGE():
