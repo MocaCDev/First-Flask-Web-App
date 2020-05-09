@@ -60,12 +60,12 @@ def HOME_PAGE():
 		else:
 			# Might as well check if they're both less than one
 			if len(request.form['Username']) < 1 and len(request.form['Email']) < 1:
-				if os.path.exists('username_info.json') and len(lastUsers_)>0:
+				if os.path.exists('username_info.json'):
 					return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email and Username input was left blank...please complete the inputs",lastUsers=lastUsers_)
 				else:
 					return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email and Username input was left blank...please complete the inputs")
 			else:
-				if os.path.exists('username_info.json') and len(lastUsers_)>0:
+				if os.path.exists('username_info.json'):
 					return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email input was left blank...please complete the Email input",lastUsername=request.form['Username'],lastUsers=lastUsers_)
 				else:
 					return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email input was left blank...please complete the Email input",lastUsername=request.form['Username'])
@@ -98,7 +98,7 @@ def HOME_PAGE():
 		else:
 			# This repeates in second else statement..
 			# To-Do: Possibly add a better way to check if the file exists?
-			if os.path.exists('username_info.json') and len(lastUsers_)>0:
+			if os.path.exists('username_info.json'):
 				"""
 				info = json.loads(str(open('username_info.json','r').read()))
 				users = []
@@ -109,7 +109,7 @@ def HOME_PAGE():
 			else:
 				return render_template('userSetup.html',username=usernames_,email=emails_,badNames=filter_out,ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'])
 	else:
-		if os.path.exists('username_info.json') and len(lastUsers_)>0:
+		if os.path.exists('username_info.json'):
 			"""
 			info = json.loads(str(open('username_info.json','r').read()))
 			usernames = []
