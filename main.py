@@ -117,8 +117,7 @@ def HOME_PAGE():
 			for i in info['USERNAMES']:
 				usernames.append(i)
 			"""
-			if len(lastUsers_[0])>0:
-				return render_template('userSetup.html',lastUsers=lastUsers_[0],email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
+			return render_template('userSetup.html',lastUsers=lastUsers_,email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
 		else:
 			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
 
