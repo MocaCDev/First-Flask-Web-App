@@ -32,7 +32,6 @@ filter_out = [
 	'anal','ass','ball sack','cum','sperm'
 ]
 usernames_ = []
-lastUsers_ = []
 emails_ = []
 #time_now = datetime.now().strftime("%H:%M:%S")
 
