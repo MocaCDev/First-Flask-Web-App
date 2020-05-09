@@ -32,6 +32,7 @@ filter_out = [
 	'anal','ass','ball sack','cum','sperm'
 ]
 usernames_ = []
+lastUsers_=[]
 emails_ = []
 #time_now = datetime.now().strftime("%H:%M:%S")
 
@@ -50,7 +51,7 @@ def HOME_PAGE():
 		# This will append all previous added usernames
 		if os.path.exists('username_info.json'):
 			old = json.loads(str(open('username_info.json','r').read()))
-			lastUsers_=old['USERNAMES']
+			lastUsers_.append(old['USERNAMES'])
 		
 		# There is no checking for bad names in this. It is an email.
 		# If there is, perhaps, a bad name in the email, and we return an error to the webpage saying the name is invalid
@@ -105,7 +106,7 @@ def HOME_PAGE():
 				for i in info['USERNAMES']:
 					users.append(i)
 				"""
-				return render_template('userSetup.html',lastUsers=lastUsers_,email=emails_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'])
+				return render_template('userSetup.html',lastUsers=lastUsers_[0],email=emails_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'])
 			else:
 				return render_template('userSetup.html',username=usernames_,email=emails_,badNames=filter_out,ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'])
 	else:
@@ -116,7 +117,7 @@ def HOME_PAGE():
 			for i in info['USERNAMES']:
 				usernames.append(i)
 			"""
-			return render_template('userSetup.html',lastUsers=lastUsers_,email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
+			return render_template('userSetup.html',lastUsers=lastUsers_[0],email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
 		else:
 			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
 
