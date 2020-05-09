@@ -92,7 +92,7 @@ def HOME_PAGE():
 		else:
 			# This repeates in second else statement..
 			# To-Do: Possibly add a better way to check if the file exists?
-			if len(lastUsers_)>0:
+			if os.path.exists('username_info.json') and len(lastUsers_)>0:
 				"""
 				info = json.loads(str(open('username_info.json','r').read()))
 				users = []
@@ -103,7 +103,7 @@ def HOME_PAGE():
 			else:
 				return render_template('userSetup.html',username=usernames_,email=emails_,badNames=filter_out,ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'],lastUsers=lastUsers_)
 	else:
-		if len(lastUsers_)>0:
+		if os.path.exists('username_info.json') and len(lastUsers_)>0:
 			"""
 			info = json.loads(str(open('username_info.json','r').read()))
 			usernames = []
