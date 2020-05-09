@@ -51,10 +51,7 @@ def HOME_PAGE():
 		# This will append all previous added usernames
 		if os.path.exists('username_info.json'):
 			old = json.loads(str(open('username_info.json','r').read()))
-
-			for i in range(len(old['USERNAMES'])):
-				lastUsers_.append(old['USERNAMES'][i])
-				if i == len(old['USERNAMES'])-1:break
+			lastUsers_=old['USERNAMES']
 		
 		# There is no checking for bad names in this. It is an email.
 		# If there is, perhaps, a bad name in the email, and we return an error to the webpage saying the name is invalid
