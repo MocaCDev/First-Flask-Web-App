@@ -39,11 +39,11 @@
 		}
 	</script>
 </div>
-{% if username|length >= 1 %}
+{% if lastUsers|length >= 1 %}
 {% if email|length >= 1 %}
 </br><h2>ADDED USERS</h2>
 <hr>
-{% for i in username %}
+{% for i in lastUsers %}
 {% for x in email %}
 <p>Added Username: {{ i }}({{ x }})</p>
 {% endfor %}

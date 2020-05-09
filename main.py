@@ -32,6 +32,7 @@ filter_out = [
 	'anal','ass','ball sack','cum','sperm'
 ]
 usernames_ = []
+lastUsers_ = []
 emails_ = []
 #time_now = datetime.now().strftime("%H:%M:%S")
 
@@ -52,8 +53,7 @@ def HOME_PAGE():
 			old = json.loads(str(open('username_info.json','r').read()))
 
 			for i in range(len(old['USERNAMES'])):
-				del usernames_[i]
-				usernames_.append(old['USERNAMES'][i])
+				lastUsers_.append(old['USERNAMES'][i])
 				if i == len(old['USERNAMES'])-1:break
 		
 		# There is no checking for bad names in this. It is an email.
@@ -64,9 +64,9 @@ def HOME_PAGE():
 		else:
 			# Might as well check if they're both less than one
 			if len(request.form['Username']) < 1 and len(request.form['Email']) < 1:
-				return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email and Username input was left blank...please complete the inputs")
+				return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email and Username input was left blank...please complete the inputs",lastUsers=lastUsers_)
 			else:
-				return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email input was left blank...please complete the Email input",lastUsername=request.form['Username'])
+				return render_template('userSetup.html',username=usernames_,email=emails_,ERR_MSG="Email input was left blank...please complete the Email input",lastUsername=request.form['Username'],lastUsers=lastUsers_)
 
 		if len(request.form['Username']) > 1:
 			inIt = None
@@ -96,23 +96,27 @@ def HOME_PAGE():
 		else:
 			# This repeates in second else statement..
 			# To-Do: Possibly add a better way to check if the file exists?
-			if os.path.exists('username_info.json'):
+			if len(lastUsers_)>0:
+				"""
 				info = json.loads(str(open('username_info.json','r').read()))
 				users = []
 				for i in info['USERNAMES']:
 					users.append(i)
-				return render_template('userSetup.html',username=users,email=emails_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'])
+				"""
+				return render_template('userSetup.html',lastUsers=lastUsers_,email=emails_,badNames=filter_out, ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'])
 			else:
-				return render_template('userSetup.html',username=usernames_,email=emails_,badNames=filter_out,ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'])
+				return render_template('userSetup.html',username=usernames_,email=emails_,badNames=filter_out,ERR_MSG="ERROR: Username was empty. Must have at least 2 characters",lastEmail=request.form['Email'],lastUsers=lastUsers_)
 	else:
-		if os.path.exists('username_info.json'):
+		if len(lastUsers_)>0:
+			"""
 			info = json.loads(str(open('username_info.json','r').read()))
 			usernames = []
 			for i in info['USERNAMES']:
 				usernames.append(i)
-			return render_template('userSetup.html',username=usernames,email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
+			"""
+			return render_template('userSetup.html',lastUsers=lastUsers_,email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
 		else:
-			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded)
+			return render_template("userSetup.html",username=usernames_, email=emails_,badNames=filter_out,lastUsername=lastUsernameAdded,lastUsers=lastUsers_)
 
 @app.route('/about')
 def ABOUT_PAGE():
