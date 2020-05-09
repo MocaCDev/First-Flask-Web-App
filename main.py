@@ -49,10 +49,10 @@ def HOME_PAGE():
 		lastUsernameAdded=request.form['Username']
 		# This will append all previous added usernames
 		if os.path.exists('username_info.json'):
-			usernames_=[]
 			old = json.loads(str(open('username_info.json','r').read()))
 
 			for i in range(len(old['USERNAMES'])):
+				del usernames_[i]
 				usernames_.append(old['USERNAMES'][i])
 				if i == len(old['USERNAMES'])-1:break
 		
